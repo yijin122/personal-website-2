@@ -1,8 +1,8 @@
-# yijinsong
+# Hedy
 
 A personal portfolio for recruiters. The pages follow a documented record of operations research, data science, and visual work: Cornell ORIE scheduling, ride-hailing pricing, retail placement, FDNY ambulance posting, OHCA volunteer allocation, intelligent scissors, retrieval research, teaching, and the Chinese Drama Society.
 
-The source notes did not include a personal name, so the site uses the repository identity **yijinsong**.
+The site is presented under the name **Hedy**.
 
 ## Run locally
 

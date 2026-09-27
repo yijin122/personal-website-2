@@ -12,18 +12,15 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto w-full max-w-6xl px-5 py-12 md:px-8 md:py-16">
-      <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
+    <div className="mx-auto w-full max-w-6xl px-5 py-20 md:px-8 md:py-28">
+      <h1 className="max-w-3xl font-heading text-5xl font-normal tracking-tight md:text-6xl">
         About
-      </p>
-      <h1 className="mt-3 max-w-3xl font-heading text-[clamp(2.6rem,6vw,4.8rem)] leading-[0.92] tracking-tight">
-        A grid for the decision.{" "}
-        <span className="italic text-primary">A curve for the rest.</span>
       </h1>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-        The record overlaps: exam schedules and a registrar UI, a retrieval
-        pipeline, surge pricing, ambulance posting, volunteer allocation, image
-        segmentation, a company site, and comedy production for a company of 30.
+        I’m Hedy. The record overlaps: exam schedules and a registrar UI, a
+        retrieval pipeline, surge pricing, ambulance posting, volunteer
+        allocation, image segmentation, a company site, and comedy production
+        for a company of 30.
       </p>
 
       <section className="mt-14 grid gap-8 border-t border-foreground/15 py-10 md:grid-cols-12">
@@ -44,9 +41,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div>
-            <p className="font-mono text-[11px] tracking-[0.16em] text-primary uppercase">
-              Selected coursework
-            </p>
+            <p className="text-sm text-burgundy">Selected coursework</p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {coursework.map((course) => (
                 <li key={course}>
@@ -91,9 +86,7 @@ export default function AboutPage() {
         <div className="grid gap-6 sm:grid-cols-2 md:col-span-8">
           {skillGroups.map((group) => (
             <div key={group.label}>
-              <p className="font-mono text-[11px] tracking-[0.16em] text-primary uppercase">
-                {group.label}
-              </p>
+              <p className="text-sm text-burgundy">{group.label}</p>
               <ul className="mt-2 space-y-1">
                 {group.items.map((item) => (
                   <li key={item} className="text-sm">

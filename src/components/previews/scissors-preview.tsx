@@ -125,15 +125,15 @@ export function ScissorsPreview() {
       for (let y = 0; y < field.rows; y += 1) {
         for (let x = 0; x < field.cols; x += 1) {
           const t = field.grad[y * field.cols + x] / field.maxGrad
-          ctx.fillStyle = `rgba(214, 59, 40, ${t})`
+          ctx.fillStyle = `rgba(109, 53, 64, ${t})`
           ctx.fillRect(x * field.step, y * field.step, field.step, field.step)
         }
       }
       ctx.globalAlpha = 1
     }
     const seeds = seedsRef.current
-    ctx.lineWidth = 2.25
-    ctx.strokeStyle = "#d63b28"
+    ctx.lineWidth = 1.75
+    ctx.strokeStyle = "#6d3540"
     ctx.lineJoin = "round"
     ctx.lineCap = "round"
     for (let i = 0; i < seeds.length - 1; i += 1) {
@@ -148,10 +148,10 @@ export function ScissorsPreview() {
       const p = nodePoint(field, seed)
       ctx.beginPath()
       ctx.arc(p.x, p.y, 4, 0, Math.PI * 2)
-      ctx.fillStyle = "#f4f0e6"
+      ctx.fillStyle = "#f7f3ec"
       ctx.fill()
-      ctx.lineWidth = 1.5
-      ctx.strokeStyle = "#d63b28"
+      ctx.lineWidth = 1.25
+      ctx.strokeStyle = "#6d3540"
       ctx.stroke()
     }
   }
@@ -170,7 +170,7 @@ export function ScissorsPreview() {
 
   return (
     <DrawingFrame label="Browser sketch of the Java tool">
-      <div ref={wrapRef} className="relative mt-6">
+      <div ref={wrapRef} className="relative mt-2">
         {!ready && !error ? (
           <Skeleton className="h-72 w-full rounded-none md:h-96" />
         ) : null}
@@ -251,9 +251,9 @@ export function ScissorsPreview() {
 }
 
 function drawSubject(ctx: CanvasRenderingContext2D, width: number, height: number) {
-  ctx.fillStyle = "#f3efe6"
+  ctx.fillStyle = "#f7f3ec"
   ctx.fillRect(0, 0, width, height)
-  ctx.fillStyle = "#1c1915"
+  ctx.fillStyle = "#2c2926"
   ctx.beginPath()
   ctx.moveTo(width * 0.28, height * 0.62)
   ctx.bezierCurveTo(

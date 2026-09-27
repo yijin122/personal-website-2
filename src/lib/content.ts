@@ -16,7 +16,7 @@ export type Study = {
 }
 
 export const identity = {
-  handle: "yijinsong",
+  handle: "Hedy",
   degree: "B.S. Operations Research & Engineering",
   school: "Cornell University, College of Engineering",
   place: "Ithaca, NY",

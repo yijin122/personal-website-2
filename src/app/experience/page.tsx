@@ -19,13 +19,13 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <div className="mx-auto w-full max-w-6xl px-5 py-12 md:px-8 md:py-16">
-      <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
+    <div className="mx-auto w-full max-w-6xl px-5 py-20 md:px-8 md:py-28">
+      <h1 className="max-w-3xl font-heading text-5xl font-normal tracking-tight md:text-6xl">
         Experience
-      </p>
-      <h1 className="mt-3 max-w-3xl font-heading text-[clamp(2.6rem,6vw,4.8rem)] leading-[0.92] tracking-tight">
-        The record, in the order it was written.
       </h1>
+      <p className="mt-4 max-w-xl text-muted-foreground">
+        Technical work, teaching, and the Chinese Drama Society.
+      </p>
       <RoleList title="Technical" roles={technicalRoles} />
       <RoleList title="Teaching" roles={teachingRoles} />
       <RoleList title="Leadership" roles={leadershipRoles} />

@@ -7,10 +7,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-outfit);
+  --font-sans: var(--font-source);
   --font-mono: var(--font-plex);
-  --font-heading: var(--font-fraunces);
-  --color-signal: var(--signal);
+  --font-heading: var(--font-newsreader);
+  --color-burgundy: var(--burgundy);
+  --color-signal: var(--burgundy);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -50,39 +51,40 @@
 }
 
 :root {
-  --background: oklch(0.965 0.012 95);
-  --foreground: oklch(0.25 0.02 65);
-  --card: oklch(0.98 0.008 95);
-  --card-foreground: oklch(0.25 0.02 65);
-  --popover: oklch(0.98 0.008 95);
-  --popover-foreground: oklch(0.25 0.02 65);
-  --primary: oklch(0.55 0.2 27);
-  --primary-foreground: oklch(0.98 0.008 95);
-  --secondary: oklch(0.935 0.012 92);
-  --secondary-foreground: oklch(0.28 0.02 65);
-  --muted: oklch(0.93 0.012 92);
-  --muted-foreground: oklch(0.46 0.02 65);
-  --accent: oklch(0.93 0.02 80);
-  --accent-foreground: oklch(0.28 0.02 65);
-  --destructive: oklch(0.55 0.2 27);
-  --border: oklch(0.84 0.016 85);
-  --input: oklch(0.84 0.016 85);
-  --ring: oklch(0.55 0.2 27);
-  --signal: oklch(0.55 0.2 27);
-  --chart-1: oklch(0.55 0.2 27);
-  --chart-2: oklch(0.4 0.02 65);
-  --chart-3: oklch(0.7 0.04 70);
-  --chart-4: oklch(0.32 0.02 65);
-  --chart-5: oklch(0.82 0.02 90);
-  --radius: 0.3rem;
-  --sidebar: oklch(0.98 0.008 95);
-  --sidebar-foreground: oklch(0.25 0.02 65);
-  --sidebar-primary: oklch(0.55 0.2 27);
-  --sidebar-primary-foreground: oklch(0.98 0.008 95);
-  --sidebar-accent: oklch(0.93 0.012 92);
-  --sidebar-accent-foreground: oklch(0.28 0.02 65);
-  --sidebar-border: oklch(0.84 0.016 85);
-  --sidebar-ring: oklch(0.55 0.2 27);
+  --background: oklch(0.975 0.012 92);
+  --foreground: oklch(0.29 0.012 45);
+  --card: oklch(0.985 0.008 92);
+  --card-foreground: oklch(0.29 0.012 45);
+  --popover: oklch(0.985 0.008 92);
+  --popover-foreground: oklch(0.29 0.012 45);
+  --primary: oklch(0.32 0.014 45);
+  --primary-foreground: oklch(0.975 0.01 92);
+  --secondary: oklch(0.95 0.008 90);
+  --secondary-foreground: oklch(0.32 0.014 45);
+  --muted: oklch(0.945 0.008 90);
+  --muted-foreground: oklch(0.5 0.01 45);
+  --accent: oklch(0.95 0.01 80);
+  --accent-foreground: oklch(0.32 0.014 45);
+  --destructive: oklch(0.42 0.09 18);
+  --border: oklch(0.9 0.008 85);
+  --input: oklch(0.9 0.008 85);
+  --ring: oklch(0.42 0.09 18);
+  --burgundy: oklch(0.42 0.09 18);
+  --signal: oklch(0.42 0.09 18);
+  --chart-1: oklch(0.42 0.09 18);
+  --chart-2: oklch(0.4 0.012 45);
+  --chart-3: oklch(0.62 0.02 70);
+  --chart-4: oklch(0.32 0.014 45);
+  --chart-5: oklch(0.82 0.01 90);
+  --radius: 0.15rem;
+  --sidebar: oklch(0.985 0.008 92);
+  --sidebar-foreground: oklch(0.29 0.012 45);
+  --sidebar-primary: oklch(0.32 0.014 45);
+  --sidebar-primary-foreground: oklch(0.975 0.01 92);
+  --sidebar-accent: oklch(0.95 0.008 90);
+  --sidebar-accent-foreground: oklch(0.32 0.014 45);
+  --sidebar-border: oklch(0.9 0.008 85);
+  --sidebar-ring: oklch(0.42 0.09 18);
 }
 
 @layer base {
@@ -98,48 +100,12 @@
     @apply bg-background text-foreground;
   }
   ::selection {
-    background: color-mix(in oklch, var(--primary) 28%, transparent);
-  }
-}
-
-.blob {
-  border-radius: 58% 42% 63% 37% / 42% 55% 45% 58%;
-  animation: morph 18s ease-in-out infinite;
-}
-
-.chart-draw {
-  stroke-dasharray: 1400;
-  stroke-dashoffset: 1400;
-  animation: draw 1.8s ease forwards;
-}
-
-@keyframes morph {
-  0%,
-  100% {
-    border-radius: 58% 42% 63% 37% / 42% 55% 45% 58%;
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    border-radius: 40% 60% 36% 64% / 58% 38% 62% 42%;
-    transform: rotate(8deg) scale(1.05);
-  }
-}
-
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
+    background: color-mix(in oklch, var(--burgundy) 22%, transparent);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .blob,
-  .chart-draw {
-    animation: none;
-  }
-  .chart-draw {
-    stroke-dashoffset: 0;
   }
 }

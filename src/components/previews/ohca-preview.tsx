@@ -61,9 +61,9 @@ export function OhcaPreview() {
   return (
     <div className="grid gap-4 lg:grid-cols-12">
       <DrawingFrame label="Time to defibrillation" className="lg:col-span-7">
-        <svg viewBox="0 0 250 180" className="mt-6 h-auto w-full" role="img" aria-label="Schematic survival index against minutes to defibrillation">
-          <path d={path} fill="none" className="stroke-primary chart-draw" strokeWidth="2" />
-          <circle cx={x} cy={y} r="4" className="fill-primary" />
+        <svg viewBox="0 0 250 180" className="mt-2 h-auto w-full" role="img" aria-label="Schematic survival index against minutes to defibrillation">
+          <path d={path} fill="none" className="stroke-burgundy" strokeWidth="1.5" />
+          <circle cx={x} cy={y} r="3.5" className="fill-burgundy" />
         </svg>
         <div className="space-y-3 px-4 pb-4">
           <Slider
@@ -88,7 +88,7 @@ export function OhcaPreview() {
         </div>
       </DrawingFrame>
       <DrawingFrame label="7,000 volunteers" className="lg:col-span-5">
-        <div className="px-4 pt-10 pb-4">
+        <div className="px-4 pt-3 pb-4">
           <svg viewBox="0 0 230 150" className="h-auto w-full" aria-hidden>
             {field.map((dot, i) => (
               <circle
@@ -100,7 +100,7 @@ export function OhcaPreview() {
               />
             ))}
           </svg>
-          <p className="font-heading text-4xl italic text-primary">+8%</p>
+          <p className="font-heading text-4xl font-normal">+8%</p>
           <p className="mt-1 text-sm text-muted-foreground">
             Citywide expected survival under the proposed reallocation.
           </p>

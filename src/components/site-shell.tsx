@@ -4,21 +4,6 @@ import { SiteHeader } from "@/components/site-header"
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
-      >
-        <div className="blob absolute -top-28 -right-24 h-[34rem] w-[34rem] bg-primary/15" />
-        <div className="blob absolute -bottom-40 -left-28 h-[28rem] w-[28rem] bg-primary/10 [animation-delay:-9s]" />
-        <div className="absolute inset-y-0 left-1/2 hidden w-full max-w-6xl -translate-x-1/2 px-8 md:grid md:grid-cols-12">
-          {Array.from({ length: 12 }, (_, index) => (
-            <div
-              key={index}
-              className="border-l border-foreground/8 last:border-r"
-            />
-          ))}
-        </div>
-      </div>
       <a
         href="#content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-background focus:px-3 focus:py-2"

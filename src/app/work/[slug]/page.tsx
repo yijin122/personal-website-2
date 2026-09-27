@@ -34,7 +34,7 @@ export default async function StudyPage({
   if (!study) notFound()
 
   return (
-    <article className="mx-auto w-full max-w-6xl px-5 py-10 md:px-8 md:py-16">
+    <article className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-24">
       <Button asChild variant="ghost" className="-ml-2 mb-8">
         <Link href="/work">
           <ArrowLeft />
@@ -43,10 +43,8 @@ export default async function StudyPage({
       </Button>
       <div className="grid gap-8 md:grid-cols-12">
         <div className="md:col-span-8">
-          <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
-            Study {study.index}
-          </p>
-          <h1 className="mt-3 font-heading text-[clamp(2.4rem,5.4vw,4.6rem)] leading-[0.92] tracking-tight">
+          <p className="text-sm text-muted-foreground">Study {study.index}</p>
+          <h1 className="mt-3 font-heading text-[clamp(2.4rem,5vw,4.2rem)] leading-[1.05] font-normal tracking-tight">
             {study.title}
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
@@ -61,11 +59,9 @@ export default async function StudyPage({
           </div>
         </div>
         <div className="md:col-span-4 md:pt-8">
-          <p className="font-heading text-5xl italic text-primary">
-            {study.metric.value}
-          </p>
+          <p className="font-heading text-4xl font-normal">{study.metric.value}</p>
           <p className="mt-2 text-sm text-muted-foreground">{study.metric.label}</p>
-          <p className="mt-4 font-mono text-[11px] leading-relaxed tracking-wide text-muted-foreground uppercase">
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             {study.place}
             <br />
             {study.date}
@@ -81,7 +77,7 @@ export default async function StudyPage({
             key={point.heading}
             className="grid gap-3 border-b border-foreground/15 py-6 md:grid-cols-12"
           >
-            <p className="font-mono text-[11px] tracking-[0.16em] text-primary uppercase md:col-span-3">
+            <p className="text-sm text-burgundy md:col-span-3">
               0{index + 1} — {point.heading}
             </p>
             <p className="text-base leading-relaxed md:col-span-9">{point.body}</p>

@@ -1,23 +1,14 @@
-"use client"
-
-import { useEffect, useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { DrawingFrame } from "@/components/drawing-frame"
 
 export function ConflictBars() {
-  const [shown, setShown] = useState(false)
-  useEffect(() => {
-    const id = window.requestAnimationFrame(() => setShown(true))
-    return () => window.cancelAnimationFrame(id)
-  }, [])
-
   return (
     <DrawingFrame label="High-conflict pairings" className="mt-6">
-      <div className="space-y-4 px-4 pt-10 pb-4">
-        <Bar label="Indexed before the new schedules" width={shown ? "100%" : "0%"} />
+      <div className="space-y-5 px-4 pt-2 pb-5">
+        <Bar label="Indexed before the new schedules" width="100%" />
         <Bar
           label="After 50+ optimization runs, −15%"
-          width={shown ? "85%" : "0%"}
+          width="85%"
           accent
         />
         <p className="text-sm text-muted-foreground">
@@ -40,12 +31,10 @@ function Bar({
 }) {
   return (
     <div>
-      <p className="mb-1 font-mono text-[10px] tracking-wide text-muted-foreground uppercase">
-        {label}
-      </p>
-      <div className="h-3 bg-muted">
+      <p className="mb-1 text-xs text-muted-foreground">{label}</p>
+      <div className="h-[2px] bg-muted">
         <div
-          className={`h-full transition-[width] duration-700 ease-out ${accent ? "bg-primary" : "bg-foreground/70"}`}
+          className={`h-full ${accent ? "bg-burgundy" : "bg-foreground/55"}`}
           style={{ width }}
         />
       </div>
@@ -56,7 +45,7 @@ function Bar({
 export function RegistrarSketch() {
   return (
     <DrawingFrame label="Registrar UI" className="mt-4">
-      <div className="space-y-3 px-4 pt-10 pb-4">
+      <div className="space-y-3 px-4 pt-2 pb-5">
         <p className="text-sm text-muted-foreground">
           The interface built for the registrar covers four moves. This is the
           function list, not a live dataset.
@@ -76,8 +65,8 @@ export function RegistrarSketch() {
 export function RagNote() {
   return (
     <DrawingFrame label="Retrieval benchmark" className="mt-6">
-      <div className="space-y-3 px-4 pt-10 pb-4">
-        <p className="font-heading text-4xl italic text-primary">100,000+</p>
+      <div className="space-y-3 px-4 pt-2 pb-5">
+        <p className="font-heading text-4xl font-normal">100,000+</p>
         <p className="text-sm text-muted-foreground">
           Query evaluations on a full-stack RAG pipeline: preprocessing,
           embeddings, and real-time retrieval.
