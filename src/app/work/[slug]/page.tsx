@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { getStudy, studies } from "@/lib/content"
 
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return studies.map((study) => ({ slug: study.slug }))
 }

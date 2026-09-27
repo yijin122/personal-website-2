@@ -165,7 +165,7 @@ export function ScissorsPreview() {
     const y = ((event.clientY - rect.top) / rect.height) * field.height
     const col = Math.min(field.cols - 1, Math.max(0, Math.floor(x / field.step)))
     const row = Math.min(field.rows - 1, Math.max(0, Math.floor(y / field.step)))
-    return row * field.cols + col
+    return snapToEdge(field, row * field.cols + col)
   }
 
   return (
@@ -204,8 +204,8 @@ export function ScissorsPreview() {
       </div>
       <div className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-xl text-sm text-muted-foreground">
-          Click two points, one inside the form and one outside. The live path
-          is Dijkstra on a grid whose links are cheap along strong edges.{" "}
+          Click near the contour. Each seed snaps to the strongest nearby edge,
+          and Dijkstra keeps the path on that cheap boundary.{" "}
           {seedCount === 0
             ? "No seeds yet."
             : `${seedCount} seed${seedCount === 1 ? "" : "s"}.`}
@@ -282,6 +282,30 @@ function drawSubject(ctx: CanvasRenderingContext2D, width: number, height: numbe
   )
   ctx.closePath()
   ctx.fill()
+}
+
+function snapToEdge(field: Field, index: number) {
+  const x = index % field.cols
+  const y = Math.floor(index / field.cols)
+  const radius = 7
+  let best = index
+  let bestGrad = field.grad[index]
+  for (let dy = -radius; dy <= radius; dy += 1) {
+    for (let dx = -radius; dx <= radius; dx += 1) {
+      const nx = x + dx
+      const ny = y + dy
+      if (nx < 0 || ny < 0 || nx >= field.cols || ny >= field.rows) continue
+      const gradient = field.grad[ny * field.cols + nx]
+      if (gradient > bestGrad) {
+        bestGrad = gradient
+        best = ny * field.cols + nx
+      }
+    }
+  }
+  if (bestGrad > field.grad[index] * 1.8 && bestGrad > field.maxGrad * 0.28) {
+    return best
+  }
+  return index
 }
 
 function nodePoint(field: Field, index: number) {
