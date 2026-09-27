@@ -13,8 +13,8 @@ export default function GlobalError({
         style={{
           margin: 0,
           minHeight: "100vh",
-          background: "#f7f3ec",
-          color: "#2c2926",
+          background: "#f3efe6",
+          color: "#1c1915",
           fontFamily: "Georgia, serif",
           padding: "4rem 1.5rem",
         }}
@@ -29,8 +29,8 @@ export default function GlobalError({
           onClick={() => retry()}
           style={{
             marginTop: 24,
-            background: "#2c2926",
-            color: "#f7f3ec",
+            background: "#d63b28",
+            color: "#f3efe6",
             border: 0,
             padding: "0.7rem 1rem",
             cursor: "pointer",

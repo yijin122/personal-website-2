@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { HomeHeroChart } from "@/components/home-hero-chart"
 import { StudyRow } from "@/components/study-row"
 import { Button } from "@/components/ui/button"
 import {
@@ -17,97 +18,96 @@ const current = [...technicalRoles, ...teachingRoles, ...leadershipRoles].filter
 export default function HomePage() {
   return (
     <div className="mx-auto w-full max-w-6xl px-5 md:px-8">
-      <section className="max-w-2xl py-24 md:py-36">
-        <p className="text-sm text-muted-foreground">
-          {identity.school.replace(", College of Engineering", "")} ·{" "}
-          {identity.place}
-        </p>
-        <h1 className="mt-6 font-heading text-[clamp(3.1rem,7vw,5.5rem)] leading-[1.05] font-normal tracking-tight">
-          Hi, I’m Hedy.
-        </h1>
-        <div className="mt-8 h-px w-12 bg-burgundy" />
-        <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-          I’m studying operations research and engineering at Cornell, and I’ve
-          been admitted early to the master’s in financial engineering. The
-          pages below are the work I would walk a recruiter through: pricing,
-          exam schedules, fleets, retrieval, and the interfaces around them.
-        </p>
-        <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
-          <Button asChild variant="link" className="h-auto px-0 text-base">
-            <Link href="#studies">Selected work</Link>
-          </Button>
-          <Button
-            asChild
-            variant="link"
-            className="h-auto px-0 text-base text-muted-foreground"
-          >
-            <Link href="/experience">Experience</Link>
-          </Button>
+      <section className="grid items-end gap-10 py-12 md:grid-cols-12 md:py-20">
+        <div className="md:col-span-7">
+          <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
+            01 — {identity.place} · Hong Kong · remote
+          </p>
+          <h1 className="mt-4 font-heading text-[clamp(2.8rem,6.6vw,5.6rem)] leading-[0.9] font-medium tracking-tight">
+            Hi, I’m{" "}
+            <span className="italic text-primary">Hedy.</span>
+          </h1>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            I’m studying operations research and engineering at Cornell, and
+            I’ve been admitted early to the master’s in financial engineering.
+            The pages below are the work I would walk a recruiter through:
+            pricing, exam schedules, fleets, retrieval, and the interfaces
+            around them.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button asChild className="h-11 px-5">
+              <Link href="/work">Open a case study</Link>
+            </Button>
+            <Button asChild variant="outline" className="h-11 px-5">
+              <Link href="/experience">Read the record</Link>
+            </Button>
+          </div>
+        </div>
+        <div className="md:col-span-5">
+          <HomeHeroChart />
         </div>
       </section>
 
-      <section
-        aria-label="Reported results"
-        className="grid border-t border-border sm:grid-cols-2 lg:grid-cols-5"
-      >
+      <section aria-label="Reported results" className="grid grid-cols-2 border-y border-foreground/15 md:grid-cols-5">
         {metrics.map((metric) => (
           <Link
             key={metric.value}
             href={metric.href}
-            className="border-b border-border px-1 py-8 transition-colors duration-200 hover:text-burgundy sm:px-4 lg:border-b-0 lg:border-l lg:first:border-l-0"
+            className="border-foreground/15 px-3 py-5 transition-colors hover:bg-primary/5 md:border-l md:first:border-l-0"
           >
-            <p className="font-heading text-3xl font-normal">{metric.value}</p>
-            <p className="mt-3 text-sm leading-snug text-muted-foreground">
+            <p className="font-heading text-3xl italic text-primary md:text-4xl">
+              {metric.value}
+            </p>
+            <p className="mt-2 text-xs leading-snug text-muted-foreground">
               {metric.label}
             </p>
           </Link>
         ))}
       </section>
 
-      <section id="studies" className="scroll-mt-24 py-20 md:py-28">
-        <div className="mb-12 flex items-end justify-between gap-6">
+      <section id="studies" className="scroll-mt-20 py-14 md:py-20">
+        <div className="mb-8 flex items-end justify-between gap-4">
           <div>
-            <h2 className="font-heading text-4xl font-normal tracking-tight">
-              Selected work
-            </h2>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-              Five studies. Each figure can be moved; numbers that were not in
-              the notes are marked illustrative.
+            <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
+              02 — Case studies
             </p>
+            <h2 className="mt-2 font-heading text-4xl tracking-tight md:text-5xl">
+              Five models you can move.
+            </h2>
           </div>
-          <Button asChild variant="link" className="hidden h-auto px-0 sm:inline-flex">
+          <Button asChild variant="ghost" className="hidden sm:inline-flex">
             <Link href="/work">All studies</Link>
           </Button>
         </div>
-        <div className="border-b border-border">
+        <div className="border-b border-foreground/15">
           {studies.map((study) => (
             <StudyRow key={study.slug} study={study} />
           ))}
         </div>
       </section>
 
-      <section
-        id="now"
-        className="scroll-mt-24 grid gap-10 border-t border-border py-20 md:grid-cols-12 md:py-28"
-      >
+      <section id="now" className="scroll-mt-20 grid gap-8 border-t border-foreground/15 py-14 md:grid-cols-12 md:py-20">
         <div className="md:col-span-4">
-          <h2 className="font-heading text-4xl font-normal tracking-tight">
-            At the moment
+          <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
+            03 — Now
+          </p>
+          <h2 className="mt-2 font-heading text-4xl tracking-tight">
+            What is still in motion.
           </h2>
         </div>
         <ul className="md:col-span-8">
           {current.map((role) => (
             <li
               key={role.id}
-              className="grid gap-1 border-b border-border py-5 md:grid-cols-5"
+              className="grid gap-1 border-b border-foreground/10 py-4 md:grid-cols-5"
             >
               <p className="text-sm md:col-span-3">{role.title}</p>
-              <p className="text-sm text-muted-foreground md:col-span-2 md:text-right">
+              <p className="font-mono text-[11px] tracking-wide text-muted-foreground uppercase md:col-span-2 md:text-right">
                 {role.org}
               </p>
             </li>
           ))}
-          <li className="pt-6">
+          <li className="pt-4">
             <Button asChild variant="outline">
               <Link href="/experience">Full experience</Link>
             </Button>

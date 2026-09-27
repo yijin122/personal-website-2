@@ -38,7 +38,7 @@ export function RetailPreview() {
   return (
     <div className="grid gap-4 lg:grid-cols-12">
       <DrawingFrame label="Store plan" className="lg:col-span-7">
-        <div className="grid gap-2 px-4 pt-4 pb-4">
+        <div className="grid gap-2 px-4 pt-10 pb-4">
           {zones.map((item) => {
             const selected = zone === item.id
             const hot = item.id === "front" && interaction === "interaction"
@@ -70,7 +70,7 @@ export function RetailPreview() {
         </div>
       </DrawingFrame>
       <DrawingFrame label="Revenue model" className="lg:col-span-5">
-        <div className="space-y-4 px-4 pt-4 pb-4">
+        <div className="space-y-4 px-4 pt-10 pb-4">
           <Tabs
             value={interaction}
             onValueChange={(value) =>

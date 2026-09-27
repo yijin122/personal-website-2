@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Newsreader, Source_Sans_3 } from "next/font/google";
+import { Fraunces, IBM_Plex_Mono, Outfit } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SiteShell } from "@/components/site-shell";
 import "./globals.css";
 
-const newsreader = Newsreader({
+const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-newsreader",
+  variable: "--font-fraunces",
   style: ["normal", "italic"],
+  axes: ["SOFT", "WONK", "opsz"],
 });
 
-const sourceSans = Source_Sans_3({
+const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-source",
+  variable: "--font-outfit",
 });
 
 const plex = IBM_Plex_Mono({
@@ -26,11 +27,11 @@ const plex = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Hedy — Operations research",
+    default: "Hedy — Operations research, composed",
     template: "%s — Hedy",
   },
   description:
-    "Portfolio of Hedy, Cornell ORIE: queueing, optimization, retrieval, and case studies for pricing, fleets, exams, and images.",
+    "Portfolio of Hedy, Cornell ORIE: queueing, optimization, retrieval, and visual case studies for pricing, fleets, exams, and images.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -38,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${newsreader.variable} ${sourceSans.variable} ${plex.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${outfit.variable} ${plex.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <TooltipProvider>

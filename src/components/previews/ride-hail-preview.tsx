@@ -42,7 +42,7 @@ export function RideHailPreview() {
   return (
     <div className="grid gap-4 lg:grid-cols-12">
       <DrawingFrame label="Dynamic pricing" className="lg:col-span-8">
-        <div className="px-4 pt-3">
+        <div className="px-4 pt-8">
           <Tabs
             value={mode}
             onValueChange={(value) => setMode(value as PricingMode)}
@@ -54,7 +54,7 @@ export function RideHailPreview() {
           </Tabs>
         </div>
         <svg viewBox="0 0 360 200" className="h-auto w-full" role="img" aria-label="Revenue against surge intensity">
-          <path d={path} fill="none" className="stroke-burgundy" strokeWidth="1.5" />
+          <path d={path} fill="none" className="stroke-primary" strokeWidth="2" />
           <line
             x1={cursorX}
             x2={cursorX}
@@ -62,7 +62,7 @@ export function RideHailPreview() {
             y2="168"
             className="stroke-foreground/30"
           />
-          <circle cx={cursorX} cy={cursorY} r="3.5" className="fill-burgundy" />
+          <circle cx={cursorX} cy={cursorY} r="4" className="fill-primary" />
           <text x="36" y="188" className="fill-muted-foreground text-[10px]">
             low surge
           </text>
@@ -97,7 +97,7 @@ export function RideHailPreview() {
         </div>
       </DrawingFrame>
       <DrawingFrame label="Birth–death" className="lg:col-span-4">
-        <div className="flex h-full flex-col justify-between px-4 pt-3 pb-4">
+        <div className="flex h-full flex-col justify-between px-4 pt-10 pb-4">
           <svg viewBox="0 0 220 120" className="h-auto w-full" aria-hidden>
             {[0, 1, 2, 3, 4].map((state) => {
               const x = 18 + state * 46

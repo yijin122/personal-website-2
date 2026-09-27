@@ -24,19 +24,22 @@ export function SiteHeader() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
-        <Link href="/" className="font-heading text-lg tracking-tight">
+    <header className="sticky top-0 z-40 border-b border-foreground/10 bg-background/80 backdrop-blur-md">
+      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+        <Link
+          href="/"
+          className="font-heading text-xl italic tracking-tight"
+        >
           {identity.handle}
         </Link>
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "text-sm text-muted-foreground transition-colors duration-200 hover:text-burgundy",
-                active(pathname, item.href) && "text-burgundy",
+                "text-sm transition-colors hover:text-primary",
+                active(pathname, item.href) && "text-primary",
               )}
               aria-current={active(pathname, item.href) ? "page" : undefined}
             >
@@ -53,11 +56,12 @@ export function SiteHeader() {
             </SheetTrigger>
             <SheetContent side="right" className="w-full sm:max-w-sm">
               <SheetHeader>
-                <SheetTitle className="font-heading text-2xl font-normal">
+                <SheetTitle className="font-heading text-2xl italic">
                   {identity.handle}
                 </SheetTitle>
                 <SheetDescription>
-                  Operations research and engineering at Cornell.
+                  Operations research, retrieval, and the pictures those models
+                  make.
                 </SheetDescription>
               </SheetHeader>
               <nav className="flex flex-col gap-1 px-4" aria-label="Mobile">
@@ -65,7 +69,7 @@ export function SiteHeader() {
                   <SheetClose asChild key={item.href}>
                     <Link
                       href={item.href}
-                      className="border-b border-border py-4 font-heading text-2xl font-normal"
+                      className="border-b border-foreground/10 py-3 font-heading text-3xl tracking-tight"
                     >
                       {item.label}
                     </Link>

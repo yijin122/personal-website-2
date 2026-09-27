@@ -2,7 +2,7 @@ export function StudyGlyph({ slug }: { slug: string }) {
   return (
     <svg
       viewBox="0 0 160 96"
-      className="h-16 w-full text-foreground/80 transition-colors duration-200 group-hover:text-burgundy"
+      className="h-20 w-full text-foreground transition-transform duration-500 group-hover:scale-[1.04] group-hover:text-primary"
       aria-hidden
     >
       {slug === "ride-hailing" ? <Ride /> : null}

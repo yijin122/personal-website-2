@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button"
 export default function NotFound() {
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col px-5 py-24 md:px-8">
-      <p className="text-sm text-burgundy">404</p>
-      <h1 className="mt-3 font-heading text-5xl font-normal tracking-tight md:text-6xl">
+      <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
+        404
+      </p>
+      <h1 className="mt-3 font-heading text-5xl tracking-tight md:text-6xl">
         This page is not in the index.
       </h1>
       <p className="mt-4 max-w-md text-muted-foreground">

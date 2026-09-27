@@ -35,7 +35,7 @@ export function FdnyPreview() {
 
   return (
     <DrawingFrame label="Weekday evenings · 7PM–12AM">
-      <div className="px-4 pt-3">
+      <div className="px-4 pt-8">
         <Tabs
           value={tiered ? "tiered" : "baseline"}
           onValueChange={(value) => setTiered(value === "tiered")}
@@ -51,8 +51,8 @@ export function FdnyPreview() {
         <text x="40" y="46" className="fill-muted-foreground text-[10px]">
           90% within 9 min
         </text>
-        <path d={path} fill="none" className="stroke-burgundy" strokeWidth="1.5" />
-        <circle cx={x} cy={y} r="3.5" className="fill-burgundy" />
+        <path d={path} fill="none" className="stroke-primary" strokeWidth="2" />
+        <circle cx={x} cy={y} r="4" className="fill-primary" />
       </svg>
       <div className="space-y-3 px-4 pb-4">
         <Slider
