@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu } from "lucide-react"
@@ -26,11 +27,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-foreground/10 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
-        <Link
-          href="/"
-          className="font-heading text-xl italic tracking-tight"
-        >
-          {identity.handle}
+        <Link href="/" aria-label={identity.handle} className="inline-flex">
+          <Image src="/icon" alt="" width={28} height={28} className="size-7" />
         </Link>
         <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
           {nav.map((item) => (

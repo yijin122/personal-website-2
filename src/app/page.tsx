@@ -21,7 +21,7 @@ export default function HomePage() {
       <section className="grid items-end gap-10 py-12 md:grid-cols-12 md:py-20">
         <div className="md:col-span-7">
           <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
-            01 — {identity.place} · Hong Kong · remote
+            01 — {identity.place} · Hong Kong
           </p>
           <h1 className="mt-4 font-heading text-[clamp(2.8rem,6.6vw,5.6rem)] leading-[0.9] font-medium tracking-tight">
             Hi, I’m{" "}
