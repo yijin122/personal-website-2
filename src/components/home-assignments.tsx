@@ -16,13 +16,16 @@ export function HomeAssignments() {
       <ol className="grid gap-12 md:grid-cols-3 md:gap-6">
         {homeAssignments.map((item) => (
           <li key={item.id} className="flex flex-col">
-            <div className="flex aspect-[4/3] items-center justify-center overflow-hidden border border-foreground/15 bg-card">
+            <div
+              className="relative overflow-hidden border border-foreground/15 bg-card"
+              style={{ aspectRatio: `${item.width} / ${item.height}` }}
+            >
               <Image
                 src={item.image}
                 alt={item.alt}
-                width={item.width}
-                height={item.height}
-                className="h-full w-full object-contain"
+                fill
+                sizes="(min-width: 768px) 33vw, 100vw"
+                className="object-cover"
               />
             </div>
             <p className="mt-4 font-mono text-[11px] tracking-[0.16em] text-muted-foreground uppercase">
