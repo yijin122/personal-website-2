@@ -72,7 +72,7 @@ export default function HomePage() {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
-              02 — Case studies
+              03 — Case studies
             </p>
             <h2 className="mt-2 font-heading text-4xl tracking-tight md:text-5xl">
               Five models you can move.
@@ -92,7 +92,7 @@ export default function HomePage() {
       <section id="now" className="scroll-mt-20 grid gap-8 border-t border-foreground/15 py-14 md:grid-cols-12 md:py-20">
         <div className="md:col-span-4">
           <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
-            03 — Now
+            04 - Now
           </p>
           <h2 className="mt-2 font-heading text-4xl tracking-tight">
             What is still in motion.
