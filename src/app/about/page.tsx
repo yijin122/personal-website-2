@@ -17,7 +17,8 @@ export default function AboutPage() {
         About
       </p>
       <h1 className="mt-3 max-w-3xl font-heading text-[clamp(2.6rem,6vw,4.8rem)] leading-[0.92] tracking-tight">
-        A grid for the decision.{" "}
+        A grid for the decision.
+        <br />
         <span className="italic text-primary">A curve for the rest.</span>
       </h1>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
