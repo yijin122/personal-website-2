@@ -87,6 +87,59 @@ export const metrics = [
   },
 ]
 
+export type HomeAssignment = {
+  id: string
+  title: string
+  org: string
+  line: string
+  result: string
+  image: string
+  width: number
+  height: number
+  alt: string
+  href: string
+}
+
+export const homeAssignments: HomeAssignment[] = [
+  {
+    id: "computime",
+    title: "Engineering Analytics at Computime",
+    org: "Computime · Hong Kong",
+    line: "A single-pane grid of project health and milestone progress, and a check that flags files missing from the SharePoint structure.",
+    result: "Delivered the Project Portfolio Matrix and Directory Audit.",
+    image: "/experiences/computime-dashboard.png",
+    width: 1949,
+    height: 968,
+    alt: "Computime collaboration dashboard, a project grid of health and milestone progress",
+    href: "/experience#computime",
+  },
+  {
+    id: "rag",
+    title: "RAG research at HKUST",
+    org: "HKUST · Prof. Xiaofang Zhou",
+    line: "A full-stack pipeline on SQuAD, 100,000+ queries, with Qwen3 and FlagReranker scored on F1, exact match, and latency.",
+    result: "F1 and exact match rise with Top-N, then plateau near 500.",
+    image: "/experiences/rag-topn.png",
+    width: 660,
+    height: 413,
+    alt: "HKUST poster chart of accuracy against Top-N, rising and then flattening",
+    href: "/experience#rag",
+  },
+  {
+    id: "scheduling",
+    title: "Scheduling team at Cornell University",
+    org: "ORIE · David Shmoys",
+    line: "Final-exam blocks for the registrar: filters, pins, and the conflict counts a schedule is scored on.",
+    result:
+      "A 21-block maximum-density sample reports 1 conflict; the old 21-block layercake sample reports 4.",
+    image: "/experiences/cornell-scheduler.png",
+    width: 1888,
+    height: 934,
+    alt: "Cornell exam schedule optimizer with conflict metrics and pinned time slots",
+    href: "/experience#scheduling",
+  },
+]
+
 export const studies: Study[] = [
   {
     slug: "ride-hailing",

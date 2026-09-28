@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { HomeAssignments } from "@/components/home-assignments"
 import { HomeHeroChart } from "@/components/home-hero-chart"
 import { StudyRow } from "@/components/study-row"
 import { Button } from "@/components/ui/button"
@@ -65,7 +66,9 @@ export default function HomePage() {
         ))}
       </section>
 
-      <section id="studies" className="scroll-mt-20 py-14 md:py-20">
+      <HomeAssignments />
+
+      <section id="studies" className="scroll-mt-20 border-t border-foreground/15 py-14 md:py-20">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
