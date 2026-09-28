@@ -111,7 +111,7 @@ export const homeAssignments: HomeAssignment[] = [
     width: 1949,
     height: 968,
     alt: "Computime collaboration dashboard, a project grid of health and milestone progress",
-    href: "/experience#computime",
+    href: "/assignments/computime",
   },
   {
     id: "rag",
@@ -123,7 +123,7 @@ export const homeAssignments: HomeAssignment[] = [
     width: 660,
     height: 413,
     alt: "HKUST poster chart of accuracy against Top-N, rising and then flattening",
-    href: "/experience#rag",
+    href: "/assignments/rag",
   },
   {
     id: "scheduling",
@@ -136,7 +136,7 @@ export const homeAssignments: HomeAssignment[] = [
     width: 1888,
     height: 934,
     alt: "Cornell exam schedule optimizer with conflict metrics and pinned time slots",
-    href: "/experience#scheduling",
+    href: "/assignments/scheduling",
   },
 ]
 
