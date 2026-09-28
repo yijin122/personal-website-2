@@ -2,6 +2,12 @@ import Image from "next/image"
 import Link from "next/link"
 import { homeAssignments } from "@/lib/content"
 
+const frameFocus: Record<string, string> = {
+  computime: "object-left",
+  rag: "object-center",
+  scheduling: "object-right",
+}
+
 export function HomeAssignments() {
   return (
     <section aria-label="Assignments" className="py-14 md:py-20">
@@ -16,16 +22,13 @@ export function HomeAssignments() {
       <ol className="grid gap-12 md:grid-cols-3 md:gap-6">
         {homeAssignments.map((item) => (
           <li key={item.id} className="flex flex-col">
-            <div
-              className="relative overflow-hidden border border-foreground/15 bg-card"
-              style={{ aspectRatio: `${item.width} / ${item.height}` }}
-            >
+            <div className="relative aspect-[16/9] overflow-hidden border border-foreground/15 bg-card">
               <Image
                 src={item.image}
                 alt={item.alt}
                 fill
                 sizes="(min-width: 768px) 33vw, 100vw"
-                className="object-cover"
+                className={`object-cover ${frameFocus[item.id] ?? "object-center"}`}
               />
             </div>
             <p className="mt-4 font-mono text-[11px] tracking-[0.16em] text-muted-foreground uppercase">
