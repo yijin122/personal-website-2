@@ -18,6 +18,12 @@ export type ScheduleSample = {
   otherBackToBack: string
 }
 
+export type AssignmentBeat = {
+  heading: string
+  body: string
+  figures?: AssignmentFigure[]
+}
+
 export type AssignmentRecord = {
   slug: string
   title: string
@@ -26,10 +32,12 @@ export type AssignmentRecord = {
   place: string
   dates: string
   summary: string
+  posterTitle?: string
   tags: string[]
   metric: { value: string; label: string }
   figures: AssignmentFigure[]
   sections: AssignmentSection[]
+  beats?: AssignmentBeat[]
   samples?: ScheduleSample[]
   samplesNote?: string
 }
@@ -90,35 +98,87 @@ export const assignments: AssignmentRecord[] = [
     place: "Hong Kong",
     dates: "June to Aug. 2025",
     summary:
-      "A full-stack retrieval pipeline on SQuAD. Qwen3 and FlagReranker are scored on F1, exact match, and latency as Top-N grows.",
+      "Optimizing the reranking stage to curb LLM hallucinations without sacrificing latency.",
+    posterTitle:
+      "Exploring the Precision–Efficiency Trade-Off in Retrieval-Augmented Generation",
     tags: ["RAG", "Qwen3", "FlagReranker", "SQuAD"],
     metric: {
       value: "≈ 500",
       label:
         "Top-N where F1 and exact match level off, while cost keeps rising.",
     },
-    figures: [
+    figures: [],
+    sections: [],
+    beats: [
       {
-        src: "/experiences/rag-topn.png",
-        alt: "HKUST poster chart of accuracy against Top-N, rising and then flattening",
-        width: 660,
-        height: 413,
-        caption:
-          "Accuracy against Top-N, from the poster. F1 and exact match rise together, then flatten.",
-      },
-    ],
-    sections: [
-      {
-        heading: "Role",
-        body: "AI research intern at the HKUST Data Science Foundations Lab, June to August 2025. The poster names Prof. Xiaofang Zhou as supervisor. Its title is “Exploring the Precision–Efficiency Trade-Off in Retrieval-Augmented Generation.”",
-      },
-      {
-        heading: "What was built",
-        body: "A full-stack RAG pipeline processing 100,000+ SQuAD queries against a vector database. Documents and queries are embedded, cosine similarity pulls the top-k passages, Qwen3 and FlagReranker rerank them, and the LLM answers from that context. The comparison is accuracy (F1 and exact match) against efficiency (time to first token and latency).",
+        heading: "The problem",
+        body: "The poster is by Hedy Song, Cornell University, supervised by Prof. Xiaofang Zhou at the Hong Kong University of Science and Technology. Large language models are strong at understanding and generating language, and still limited by hallucinations, stale or incomplete knowledge, and a short context window. Retrieval-augmented generation was built to ground an answer in relevant, up-to-date documents: at inference the model retrieves supporting text and places it in the prompt. That improves factual accuracy and coverage. Each of the four stages also costs compute, so the trade-off between precision and speed is the practical question for anything that has to answer in time.\n\nIndexing splits documents into chunks and turns them into dense vectors. Querying embeds the user’s question with the same model. Retrieval compares those vectors, for example by cosine similarity, and keeps the closest segments. Generation hands those segments to the model as context.",
+        figures: [
+          {
+            src: "/experiences/rag-stages.png",
+            alt: "Poster diagram of the four RAG stages: indexing, querying, retrieval, and generation",
+            width: 1467,
+            height: 833,
+            caption:
+              "The four stages on the poster: indexing, querying, retrieval, and generation.",
+          },
+        ],
       },
       {
-        heading: "Stated result",
-        body: "As Top-N grows, F1 and exact match improve. Past about 500, the poster says the gains plateau while cost keeps climbing: extra documents add noise and latency without much better answers. Reranking can raise retrieval quality, and it has to be tuned if the system is going to scale. The same poster records a separate gap: quantitative queries ran 22% below factual ones.",
+        heading: "The pipeline",
+        body: "The work is a full-stack pipeline on more than 100,000 SQuAD queries against a vector database, with retrieval, reranking, and generation in one system. The poster’s aim is to measure how retrieval depth, reranking strategy, and model complexity move both accuracy and inference latency, and to find designs that stay factually accurate at a lower cost.\n\nPipeline design is that full stack. The retrieval stage embeds documents and queries with transformer models and runs a cosine-similarity search for the top-k segments. The reranking stage fine-tunes Qwen3 and FlagReranker and compares them on accuracy (F1 and exact match) and efficiency (time to first token and latency). The generation stage joins the top passages to the question, asks the model to answer, and checks the answer against SQuAD ground truth for consistency and relevance.",
+        figures: [
+          {
+            src: "/experiences/rag-pipeline.png",
+            alt: "Poster diagram of the RAG pipeline from retrieval through reranking to generation",
+            width: 1485,
+            height: 423,
+            caption:
+              "Pipeline design, retrieval, reranking, and generation, as drawn on the poster.",
+          },
+        ],
+      },
+      {
+        heading: "What the runs show",
+        body: "As Top-N grows, F1 and exact match improve substantially. A wider context makes the answer more precise. Past about 500, the gains level off while the cost keeps climbing. The extra documents are redundant or noisy, so latency rises without a matching gain in quality.\n\nThe poster’s conclusion is that reranking can raise retrieval quality a great deal, and that it has to be tuned if the system is going to scale. An adaptive Top-N, one that moves with how hard the query is, is left as a way to hold that balance.",
+        figures: [
+          {
+            src: "/experiences/rag-accuracy-a.png",
+            alt: "Poster chart of accuracy against Top-N, rising and then flattening",
+            width: 991,
+            height: 620,
+            caption: "Accuracy against Top-N. One of the poster’s two result charts.",
+          },
+          {
+            src: "/experiences/rag-accuracy-b.png",
+            alt: "Second poster chart of accuracy against Top-N, rising and then flattening",
+            width: 991,
+            height: 620,
+            caption:
+              "The other accuracy chart. Together they are F1 and exact match.",
+          },
+          {
+            src: "/experiences/rag-rerank.png",
+            alt: "Poster graphic comparing reranking settings on accuracy and latency",
+            width: 937,
+            height: 264,
+            caption:
+              "The results graphic placed with the written trade-off between depth and latency.",
+          },
+        ],
+      },
+      {
+        heading: "What is left open",
+        body: "Two next steps are written on the poster. The first is a wider evaluation: more datasets and more rerankers, so the result is not tied to one domain.\n\nThe second is the quantitative-query gap. On the current results, quantitative questions score 22% below factual ones. The poster suggests three responses: rerankers built for numerical reasoning; a boost for passages that contain the matching units, quantities, or statistical terms; and knowledge graphs that link entities to numerical attributes, so the reasoning can be structured.",
+        figures: [
+          {
+            src: "/experiences/rag-future.png",
+            alt: "Poster illustration for the open questions after the RAG experiments",
+            width: 923,
+            height: 693,
+            caption: "The poster’s figure beside the future-work notes.",
+          },
+        ],
       },
     ],
   },

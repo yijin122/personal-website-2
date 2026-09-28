@@ -5,7 +5,11 @@ import { notFound } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { assignments, getAssignment } from "@/lib/assignments"
+import {
+  assignments,
+  getAssignment,
+  type AssignmentFigure,
+} from "@/lib/assignments"
 
 export const dynamicParams = false
 
@@ -49,6 +53,11 @@ export default async function AssignmentPage({
           <h1 className="mt-3 font-heading text-[clamp(2.4rem,5.4vw,4.6rem)] leading-[0.92] tracking-tight">
             {assignment.title}
           </h1>
+          {assignment.posterTitle ? (
+            <p className="mt-4 max-w-2xl font-heading text-2xl leading-snug italic text-primary md:text-3xl">
+              {assignment.posterTitle}
+            </p>
+          ) : null}
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             {assignment.summary}
           </p>
@@ -77,23 +86,48 @@ export default async function AssignmentPage({
         </div>
       </div>
 
+      {assignment.beats ? (
+        <ol className="mt-12 border-t border-foreground/15">
+          {assignment.beats.map((beat, index) => (
+            <li
+              key={beat.heading}
+              className="grid gap-6 border-b border-foreground/15 py-8 md:grid-cols-12"
+            >
+              <p className="font-mono text-[11px] tracking-[0.16em] text-primary uppercase md:col-span-3">
+                0{index + 1} — {beat.heading}
+              </p>
+              <div className="space-y-6 md:col-span-9">
+                {beat.body.split("\n\n").map((paragraph) => (
+                  <p key={paragraph.slice(0, 48)} className="text-base leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+                {beat.figures ? (
+                  <div
+                    className={
+                      beat.figures.length > 1
+                        ? "grid gap-4 md:grid-cols-2"
+                        : "grid gap-4"
+                    }
+                  >
+                    {beat.figures.map((figure) => (
+                      <AssignmentFigureView
+                        key={figure.src}
+                        figure={figure}
+                        wide={beat.figures!.length === 1 || figure.width / figure.height > 2.2}
+                      />
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <>
       <div className="mt-10 space-y-6">
         {assignment.figures.map((figure) => (
-          <figure
-            key={figure.src}
-            className="border border-foreground/15 bg-card"
-          >
-            <Image
-              src={figure.src}
-              alt={figure.alt}
-              width={figure.width}
-              height={figure.height}
-              className="h-auto w-full"
-            />
-            <figcaption className="border-t border-foreground/15 px-4 py-3 font-mono text-[11px] tracking-wide text-muted-foreground uppercase">
-              {figure.caption}
-            </figcaption>
-          </figure>
+          <AssignmentFigureView key={figure.src} figure={figure} wide />
         ))}
       </div>
 
@@ -142,6 +176,33 @@ export default async function AssignmentPage({
           </li>
         ))}
       </ol>
+        </>
+      )}
     </article>
+  )
+}
+
+function AssignmentFigureView({
+  figure,
+  wide = false,
+}: {
+  figure: AssignmentFigure
+  wide?: boolean
+}) {
+  return (
+    <figure
+      className={`border border-foreground/15 bg-card ${wide ? "md:col-span-2" : ""}`}
+    >
+      <Image
+        src={figure.src}
+        alt={figure.alt}
+        width={figure.width}
+        height={figure.height}
+        className="h-auto w-full"
+      />
+      <figcaption className="border-t border-foreground/15 px-4 py-3 font-mono text-[11px] tracking-wide text-muted-foreground uppercase">
+        {figure.caption}
+      </figcaption>
+    </figure>
   )
 }
