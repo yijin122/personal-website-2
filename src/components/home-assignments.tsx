@@ -12,8 +12,8 @@ export function HomeAssignments() {
   return (
     <section id="assignments" aria-label="Assignments" className="scroll-mt-20 py-14 md:py-20">
       <div className="mb-8 max-w-xl">
-        <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
-          Assignments
+        <p className="font-mono text-[11px] tracking-[0.18em] text-primary">
+          02 - Work Experiences
         </p>
         <h2 className="mt-2 font-heading text-4xl tracking-tight md:text-5xl">
           Three desks.
