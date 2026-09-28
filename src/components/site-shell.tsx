@@ -10,14 +10,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       >
         <div className="blob absolute -top-28 -right-24 h-[34rem] w-[34rem] bg-primary/15" />
         <div className="blob absolute -bottom-40 -left-28 h-[28rem] w-[28rem] bg-primary/10 [animation-delay:-9s]" />
-        <div className="absolute inset-y-0 left-1/2 hidden w-full max-w-6xl -translate-x-1/2 px-8 md:grid md:grid-cols-12">
-          {Array.from({ length: 12 }, (_, index) => (
-            <div
-              key={index}
-              className="border-l border-foreground/8 last:border-r"
-            />
-          ))}
-        </div>
       </div>
       <a
         href="#content"
