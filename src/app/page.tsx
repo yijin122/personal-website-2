@@ -1,6 +1,6 @@
+import Image from "next/image"
 import Link from "next/link"
 import { HomeAssignments } from "@/components/home-assignments"
-import { HomeHeroChart } from "@/components/home-hero-chart"
 import { StudyRow } from "@/components/study-row"
 import { Button } from "@/components/ui/button"
 import {
@@ -19,7 +19,7 @@ const current = [...technicalRoles, ...teachingRoles, ...leadershipRoles].filter
 export default function HomePage() {
   return (
     <div className="mx-auto w-full max-w-6xl px-5 md:px-8">
-      <section className="grid items-end gap-10 py-12 md:grid-cols-12 md:py-20">
+      <section className="grid items-center gap-10 py-12 md:grid-cols-12 md:py-16">
         <div className="md:col-span-7">
           <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
             01 — {identity.place} · Hong Kong
@@ -45,7 +45,16 @@ export default function HomePage() {
           </div>
         </div>
         <div className="md:col-span-5">
-          <HomeHeroChart />
+          <Image
+            src="/cover-portrait.png"
+            alt="Illustrated portrait of Hedy holding a camera"
+            width={1160}
+            height={1047}
+            priority
+            quality={100}
+            sizes="(min-width: 768px) 42vw, 100vw"
+            className="h-auto w-full"
+          />
         </div>
       </section>
 
