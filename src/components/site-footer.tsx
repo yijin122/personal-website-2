@@ -1,5 +1,5 @@
-import Image from "next/image"
 import Link from "next/link"
+import { Mark } from "@/components/mark"
 import { identity, nav } from "@/lib/content"
 
 export function SiteFooter() {
@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 py-10 md:grid-cols-12 md:px-8">
         <div className="md:col-span-6">
           <Link href="/" aria-label={identity.handle} className="inline-flex">
-            <Image src="/icon" alt="" width={28} height={28} className="size-7" />
+            <Mark className="size-7" />
           </Link>
           <p className="mt-2 max-w-sm text-sm text-muted-foreground">
             Contact Me:{" "}
