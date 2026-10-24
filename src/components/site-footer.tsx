@@ -8,7 +8,14 @@ export function SiteFooter() {
       <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 py-10 md:grid-cols-12 md:px-8">
         <div className="md:col-span-6">
           <Link href="/" aria-label={identity.handle} className="inline-flex">
-            <Image src="/icon" alt="" width={28} height={28} className="size-7" />
+            <Image
+              src="/icon"
+              alt=""
+              width={128}
+              height={128}
+              quality={100}
+              className="size-7"
+            />
           </Link>
           <p className="mt-2 max-w-sm text-sm text-muted-foreground">
             Contact Me:{" "}

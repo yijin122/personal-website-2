@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og"
 
-export const size = { width: 32, height: 32 }
+export const size = { width: 512, height: 512 }
 export const contentType = "image/png"
 
 const sPath =
@@ -17,7 +17,7 @@ export default function Icon() {
           display: "flex",
         }}
       >
-        <svg width="32" height="32" viewBox="0 0 32 32">
+        <svg width="512" height="512" viewBox="0 0 32 32">
           <path
             d={sPath}
             fill="none"
